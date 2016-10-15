@@ -77,7 +77,71 @@ public class MainActivity extends AppCompatActivity
     {
         if(isValid())
         {
+            String nm = edNama.getText().toString();
+            String kls = edKelas.getText().toString();
+            String nab = edNo.getText().toString();
+            int stratlen1 = cbHasil1.length();
+            int stratlen2 = cbHasil2.length();
+            String irb;
 
+            if (cb11.isChecked()) cbHasil1 += "\t- "+ cb11.getText() +"\n";
+            if (cb12.isChecked()) cbHasil1 += "\t- "+ cb12.getText() +"\n";
+            if (cb21.isChecked()) cbHasil2 += "\t- "+ cb21.getText() +"\n";
+            if (cb22.isChecked()) cbHasil2 += "\t- "+ cb22.getText() +"\n";
+            if (cb23.isChecked()) cbHasil2 += "\t- "+ cb23.getText() +"\n";
+            if (cbHasil1.length()==stratlen1)
+            {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                builder1.setMessage("Anda harus memesan makanan!!");
+                builder1.setCancelable(true);
+
+                builder1.setNeutralButton(
+                        "Ok",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                                //startActivity(new Intent(CourseActivity.this, MainActivity.class));
+                            }
+                        });
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            }
+            if (cbHasil2.length()==stratlen2) cbHasil2+= "Tidak memilih Lauk";
+
+            if (rgMinum.getCheckedRadioButtonId()!= -1)
+            {
+                RadioButton rb = (RadioButton) findViewById(rgMinum.getCheckedRadioButtonId());
+                irb = rb.getText().toString();
+            }
+            else
+            {
+                irb = null;
+            }
+
+            if (irb == null)
+            {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                builder1.setMessage("Anda harus memesan minuman!!");
+                builder1.setCancelable(true);
+
+                builder1.setNeutralButton(
+                        "Ok",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                                //startActivity(new Intent(CourseActivity.this, MainActivity.class));
+                            }
+                        });
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            }
+            else
+            {
+                tvHasil.setText("-> Siswa yang memesan di kantin : \n\t- Nama\t\t\t: "+ nm +"\n\t- Kelas\t\t\t: "+ kls + "\n\t- No Absen\t: "+ nab
+                        + "\n-> Pesan di "+ spKantin.getSelectedItem().toString()+"\n-> Memesan Makan : \n"+ cbHasil1 +"-> Dengan Lauk :\n"+ cbHasil2
+                        +"-> dan juga memesan "+ irb+" ");
+                kondisiawal();
+            }
         }
     }
 
