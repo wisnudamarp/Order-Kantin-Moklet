@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="knt">
+        <item>Kantin Pak Yoyok</item>
+        <item>Kantin Bu Marni</item>
+        <item>Kantin Aice</item>
+        <item>Kantin Fried Chicken</item>
+        <item>Kantin Bu Haji</item>
+    </string-array>
+</resources>
