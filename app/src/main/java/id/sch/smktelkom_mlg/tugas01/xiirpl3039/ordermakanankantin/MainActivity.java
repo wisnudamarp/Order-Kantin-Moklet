@@ -46,7 +46,96 @@ public class MainActivity extends AppCompatActivity
         tvHasil = (TextView) findViewById(R.id.textViewHasil);
 
 
+        kondisiawal();
+        findViewById(R.id.buttonPesan).setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                proses();
+            }
+        });
+    }
 
+    private void kondisiawal()
+    {
+        edNama.setText("");
+        edKelas.setText("");
+        edNo.setText("");
+        cb11.setChecked(false);
+        cb12.setChecked(false);
+        cb21.setChecked(false);
+        cb22.setChecked(false);
+        cb23.setChecked(false);
+        rgMinum.clearCheck();
+        spKantin.setSelection(0);
+        cbHasil1="";
+        cbHasil2="";
+    }
+
+    private void proses()
+    {
+        if(isValid())
+        {
+
+        }
+    }
+
+    private boolean isValid()
+    {
+        boolean valid = true;
+
+        String nm = edNama.getText().toString();
+        String kls = edKelas.getText().toString();
+        String nab = edNo.getText().toString();
+
+
+        if (nm.isEmpty())
+        {
+            edNama.setError("Nama belum diisi");
+            valid =false;
+        }
+        else if (nm.length()<5)
+        {
+            edNama.setError("Nama Minimal 5 karakter");
+            valid =false;
+        }
+        else
+        {
+            edNama.setError(null);
+        }
+
+        if (kls.isEmpty())
+        {
+            edKelas.setError("Kelas belum diisi");
+            valid =false;
+        }
+        else if (kls.length() <= 5)
+        {
+            edKelas.setError("Format kelas harus kkkjjjnn");
+            valid =false;
+        }
+        else
+        {
+            edKelas.setError(null);
+        }
+
+        if (nab.isEmpty())
+        {
+            edNo.setError("No harus di isi");
+            valid =false;
+        }
+        else if (nab.length() != 2)
+        {
+            edNo.setError("Format no harus nn");
+            valid =false;
+        }
+        else
+        {
+            edNo.setError(null);
+        }
+
+        return  valid;
     }
 
 }
